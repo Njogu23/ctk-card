@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import React, { useState, useRef, useEffect } from 'react';
 import QRCode from 'qrcode'; // Import QRCode library
+import Image from 'next/image';
 
 // Custom SVG icons for Threads and TikTok
 const ThreadsIcon = ({ color = "currentColor" }) => (
@@ -165,7 +166,7 @@ END:VCARD`;
                 {/* Logo/Icon */}
                 <div className="animate-bounce">
                   <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-lg">
-                    <span className="text-4xl" style={{ color: '#f99f1b' }}>✈️</span>
+                    <Image src="/ctk-logo.png" height={80} width={80} alt="ctk logo"/>
                   </div>
                 </div>
                 
