@@ -12,7 +12,9 @@ import {
   Twitter,
   Linkedin,
   Youtube,
-  Star
+  Star,
+  Phone,
+  Mail
 } from 'lucide-react';
 import React, { useState, useRef, useEffect } from 'react';
 import QRCode from 'qrcode'; // Import QRCode library
@@ -173,7 +175,8 @@ END:VCARD`;
                 {/* Company Info */}
                 <div className="text-center lg:text-left flex-1">
                   <h1 className="text-4xl lg:text-5xl font-bold mb-2">Come Travel Kenya Limited</h1>
-                  <p className="text-lg opacity-80">We are a Destination Management Company</p>
+                  <p className="text-lg opacity-80">We are a Destination Management Company</p> <br />
+                  <p className="text-lg opacity-80">Meetings Incentives Conferences Exhibitions, Safaris & Immigration Services.</p>
                 </div>
                 
                 {/* QR Code Button */}
@@ -201,7 +204,7 @@ END:VCARD`;
                   <MapPin className="w-6 h-6" style={{ color: '#2b4921' }} />
                   <div>
                     <h3 className="font-semibold text-gray-800">Our Location</h3>
-                    <p className="text-gray-600">Rosslyn Riviera Mall, 2nd floor Unit 205, Limuru Road</p>
+                    <p className="text-gray-600">Rosslyn Riviera Mall, 2nd Floor Unit 205, Limuru Road, Nairobi Kenya.</p>
                   </div>
                 </div>
               </div>
@@ -225,6 +228,50 @@ END:VCARD`;
                   <p className="text-gray-600 text-sm">www.cometravelkenya.co.ke</p>
                 </div>
               </a>
+
+              <div className="space-y-3 p-6">
+                <a 
+                  href="tel:+254711082254" 
+                  className="rounded-xl p-4 border border-gray-200 hover:border-orange-300 flex items-center gap-3 transition-all duration-300 hover:translate-x-1 hover:bg-orange-50"
+                >
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center" 
+                      style={{ backgroundColor: 'rgba(249, 159, 27, 0.1)' }}>
+                    <Phone className="w-6 h-6" style={{ color: '#2b4921' }} />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-800">Call Us</h4>
+                    <p className="text-gray-600 text-sm">+254 (0) 711 082254</p>
+                  </div>
+                </a>
+
+                <a 
+                  href="tel:+254746910570" 
+                  className="rounded-xl p-4 border border-gray-200 hover:border-orange-300 flex items-center gap-3 transition-all duration-300 hover:translate-x-1 hover:bg-orange-50"
+                >
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center" 
+                      style={{ backgroundColor: 'rgba(249, 159, 27, 0.1)' }}>
+                    <Phone className="w-6 h-6" style={{ color: '#2b4921' }} />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-800">Call Us</h4>
+                    <p className="text-gray-600 text-sm">+254 (0) 746 910570</p>
+                  </div>
+                </a>
+                </div>
+
+                <a 
+                  href="mailto:safaris@cometravelkenya.co.ke" 
+                  className="rounded-xl p-4 border border-gray-200 hover:border-orange-300 flex items-center gap-3 transition-all duration-300 hover:translate-x-1 hover:bg-orange-50"
+                >
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center" 
+                      style={{ backgroundColor: 'rgba(249, 159, 27, 0.1)' }}>
+                    <Mail className="w-6 h-6" style={{ color: '#2b4921' }} />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-800">Email Us</h4>
+                    <p className="text-gray-600 text-sm">safaris@cometravelkenya.co.ke</p>
+                  </div>
+                </a>
               
               {/* WhatsApp */}
               <a 
@@ -291,7 +338,7 @@ END:VCARD`;
         
         {/* Footer */}
         <div className="text-center text-white opacity-75">
-          <p>&copy; 2024 Come Travel Kenya Limited. All rights reserved.</p>
+          <p>&copy; 2025 Come Travel Kenya Limited. All rights reserved.</p>
         </div>
       </div>
       
