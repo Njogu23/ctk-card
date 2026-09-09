@@ -4,7 +4,7 @@ export const company = {
   name: 'Come Travel Kenya Limited',
   tagline: 'We are a Destination Management Company',
   description:
-    'Meetings Incentives Conferences Exhibitions, Safaris & Immigration Services.',
+    'Meetings Incentives Conferences Exhibitions, Safaris & Immigration Assistance Services.',
   logo: '/ctk-logo.png',
   website: 'http://www.cometravelkenya.com/',
   websiteLabel: 'www.cometravelkenya.com',
