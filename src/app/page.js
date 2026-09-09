@@ -65,12 +65,33 @@ const ComeTravelKenyaCard = () => {
       await QRCode.toCanvas(canvas, text, {
         width: 200,
         margin: 1,
+        errorCorrectionLevel: 'H', // High EC so the centered logo doesn't break scanning
         color: {
           dark: '#2b4921', // Dark dots
           light: '#FFFFFF' // Light background
         }
       });
-      
+
+      // Draw the logo in the center of the QR code
+      await new Promise((resolve) => {
+        const logo = new window.Image();
+        logo.onload = () => {
+          const size = canvas.width * 0.22;
+          const pad = size * 0.12;
+          const x = (canvas.width - size) / 2;
+          const y = (canvas.height - size) / 2;
+
+          // White rounded background behind the logo
+          ctx.fillStyle = '#FFFFFF';
+          ctx.fillRect(x - pad, y - pad, size + pad * 2, size + pad * 2);
+
+          ctx.drawImage(logo, x, y, size, size);
+          resolve();
+        };
+        logo.onerror = resolve;
+        logo.src = '/ctk-logo.png';
+      });
+
       return canvas.toDataURL();
     } catch (err) {
       console.error(err);
@@ -104,7 +125,7 @@ ORG:Come Travel Kenya Limited
 TITLE:Destination Management Company
 TEL:+254711082254
 ADR:;;Rosslyn Riviera Mall, 2nd floor Unit 205, Limuru Road;;;;Kenya
-URL:http://www.cometravelkenya.co.ke/
+URL:http://www.cometravelkenya.com/
 EMAIL:
 NOTE:Destination Management Company
 END:VCARD`;
@@ -214,7 +235,7 @@ END:VCARD`;
             <div className="grid md:grid-cols-2 gap-6 mb-8">
               {/* Website */}
               <a 
-                href="http://www.cometravelkenya.co.ke/" 
+                href="http://www.cometravelkenya.com/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="rounded-xl p-4 border border-gray-200 hover:border-orange-300 flex items-center gap-3 transition-all duration-300 hover:translate-x-1 hover:bg-orange-50"
@@ -225,7 +246,7 @@ END:VCARD`;
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-800">Website</h4>
-                  <p className="text-gray-600 text-sm">www.cometravelkenya.co.ke</p>
+                  <p className="text-gray-600 text-sm">www.cometravelkenya.com</p>
                 </div>
               </a>
 
@@ -260,7 +281,7 @@ END:VCARD`;
                 </div>
 
                 <a 
-                  href="mailto:safaris@cometravelkenya.co.ke" 
+                  href="mailto:safaris@cometravelkenya.com" 
                   className="rounded-xl p-4 border border-gray-200 hover:border-orange-300 flex items-center gap-3 transition-all duration-300 hover:translate-x-1 hover:bg-orange-50"
                 >
                   <div className="w-12 h-12 rounded-full flex items-center justify-center" 
@@ -269,7 +290,7 @@ END:VCARD`;
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-800">Email Us</h4>
-                    <p className="text-gray-600 text-sm">safaris@cometravelkenya.co.ke</p>
+                    <p className="text-gray-600 text-sm">safaris@cometravelkenya.com</p>
                   </div>
                 </a>
               
