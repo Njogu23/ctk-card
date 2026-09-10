@@ -15,7 +15,7 @@ import {
   Mail,
 } from 'lucide-react';
 import React, { useState, useRef } from 'react';
-import QRCode from 'qrcode';
+import QRCodeStyling from 'qr-code-styling';
 import Image from 'next/image';
 import { company } from '@/data/company';
 
@@ -90,8 +90,9 @@ function buildVCard(person) {
  */
 const BusinessCard = ({ person = null }) => {
   const [showQRModal, setShowQRModal] = useState(false);
-  const [qrCodeDataURL, setQrCodeDataURL] = useState('');
-  const qrCanvasRef = useRef(null);
+  const [qrReady, setQrReady] = useState(false);
+  const qrContainerRef = useRef(null);
+  const qrCodeRef = useRef(null);
 
   const displayName = person?.name || company.name;
   const displayTitle = person?.title || company.tagline;
@@ -100,60 +101,40 @@ const BusinessCard = ({ person = null }) => {
   const whatsapp = person?.whatsapp || company.whatsapp;
   const slug = person ? `for ${person.name}` : company.name;
 
-  const generateQRCode = async (text) => {
-    const canvas = qrCanvasRef.current;
-    if (!canvas) return;
+  const generateQRCode = (text) => {
+    const container = qrContainerRef.current;
+    if (!container) return;
+    container.innerHTML = '';
 
-    try {
-      const ctx = canvas.getContext('2d');
-      ctx.fillStyle = 'white';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    const qrCode = new QRCodeStyling({
+      width: 200,
+      height: 200,
+      type: 'canvas',
+      data: text,
+      margin: 4,
+      qrOptions: { errorCorrectionLevel: 'H' }, // High EC so the centered logo doesn't break scanning
+      dotsOptions: { type: 'dots', color: BRAND.green },
+      cornersSquareOptions: { type: 'extra-rounded', color: BRAND.green },
+      cornersDotOptions: { type: 'dot', color: BRAND.green },
+      backgroundOptions: { color: '#FFFFFF' },
+      image: company.logo,
+      imageOptions: { crossOrigin: 'anonymous', margin: 4, imageSize: 0.22, hideBackgroundDots: true },
+    });
 
-      await QRCode.toCanvas(canvas, text, {
-        width: 200,
-        margin: 1,
-        errorCorrectionLevel: 'H', // High EC so the centered logo doesn't break scanning
-        color: { dark: BRAND.green, light: '#FFFFFF' },
-      });
-
-      // Draw the logo in the center of the QR code
-      await new Promise((resolve) => {
-        const logo = new window.Image();
-        logo.onload = () => {
-          const size = canvas.width * 0.22;
-          const pad = size * 0.12;
-          const x = (canvas.width - size) / 2;
-          const y = (canvas.height - size) / 2;
-          ctx.fillStyle = '#FFFFFF';
-          ctx.fillRect(x - pad, y - pad, size + pad * 2, size + pad * 2);
-          ctx.drawImage(logo, x, y, size, size);
-          resolve();
-        };
-        logo.onerror = resolve;
-        logo.src = company.logo;
-      });
-
-      return canvas.toDataURL();
-    } catch (err) {
-      console.error(err);
-      return '';
-    }
+    qrCode.append(container);
+    qrCodeRef.current = qrCode;
+    setQrReady(true);
   };
 
-  const handleShowQRModal = async () => {
+  const handleShowQRModal = () => {
     setShowQRModal(true);
-    setTimeout(async () => {
-      const dataURL = await generateQRCode(window.location.href);
-      setQrCodeDataURL(dataURL);
-    }, 100);
+    setQrReady(false);
+    setTimeout(() => generateQRCode(window.location.href), 100);
   };
 
   const handleDownloadQR = () => {
-    if (!qrCodeDataURL) return;
-    const link = document.createElement('a');
-    link.download = `${person?.slug || 'come-travel-kenya'}-qr.png`;
-    link.href = qrCodeDataURL;
-    link.click();
+    if (!qrCodeRef.current) return;
+    qrCodeRef.current.download({ name: `${person?.slug || 'come-travel-kenya'}-qr`, extension: 'png' });
   };
 
   const handleSaveContact = () => {
@@ -355,10 +336,10 @@ const BusinessCard = ({ person = null }) => {
             <h3 className="text-2xl font-bold mb-4">QR Code</h3>
             <p className="mb-4 opacity-75">Scan to view this business card {slug}</p>
             <div className="bg-white p-4 rounded-2xl mb-4 flex justify-center">
-              <canvas ref={qrCanvasRef} width="200" height="200"></canvas>
+              <div ref={qrContainerRef} className="w-[200px] h-[200px]"></div>
             </div>
             <div className="flex gap-3 justify-center">
-              <button onClick={handleDownloadQR} className="text-white px-6 py-2 rounded-full hover:opacity-90 transition-all duration-300 flex items-center gap-2" style={{ backgroundColor: BRAND.orange }} disabled={!qrCodeDataURL}>
+              <button onClick={handleDownloadQR} className="text-white px-6 py-2 rounded-full hover:opacity-90 transition-all duration-300 flex items-center gap-2" style={{ backgroundColor: BRAND.orange }} disabled={!qrReady}>
                 <Download className="w-5 h-5" />
                 Download
               </button>
