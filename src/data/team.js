@@ -37,6 +37,15 @@ export const team = [
     whatsapp: { display: '+254 793 586 403', number: '+254793586403' },
     photo: '/team/leon.jpg',
   },
+  {
+    slug: 'emily',
+    name: 'Emily Wekulo',
+    title: 'Content Writer & Storyteller',
+    phone: { display: '+254 719 892103', tel: '+254719892103' },
+    email: 'emily@cometravelkenya.com',
+    whatsapp: { display: '+254 719 892 103', number: '+254719892103' },
+    photo: '/team/emily.jpg',
+  },
 ];
 
 export function getMember(slug) {
