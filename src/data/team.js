@@ -22,7 +22,7 @@ export const team = [
   {
     slug: 'felistus',
     name: 'Felistus Wanza',
-    title: 'Tours & Safari Manager',
+    title: 'Tours & Safaris Manager',
     phone: { display: '+254 739 391892', tel: '+254739391892' },
     email: 'felistus@cometravelkenya.com',
     whatsapp: { display: '+254 739 391 892', number: '+254739391892' },
