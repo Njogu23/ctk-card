@@ -2,7 +2,7 @@
 // Any field left out falls back to the shared company value where it makes sense.
 export const team = [
   {
-    slug: 'ola-akinola',
+    slug: 'ola',
     name: 'Olalekan Akinola',
     title: 'Operations Manager',
     phone: { display: '+254 746 910570', tel: '+254746910570' },
