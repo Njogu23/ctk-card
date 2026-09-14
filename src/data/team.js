@@ -3,8 +3,8 @@
 export const team = [
   {
     slug: 'ola',
-    name: 'Olalekan Akinola',
-    title: 'Operations Manager',
+    name: 'Olalekan Akinola SAMUELS',
+    title: 'Operations Director',
     phone: { display: '+254 746 910570', tel: '+254746910570' },
     email: 'ola@cometravelkenya.com',
     whatsapp: { display: '+254 746 910 570', number: '+254746910570' },
@@ -21,8 +21,8 @@ export const team = [
   },
   {
     slug: 'felistus',
-    name: 'Felistus Wanza',
-    title: 'Tours & Safaris Manager',
+    name: 'Felistus Wanza PETER',
+    title: 'Tours Consultant',
     phone: { display: '+254 739 391892', tel: '+254739391892' },
     email: 'felistus@cometravelkenya.com',
     whatsapp: { display: '+254 739 391 892', number: '+254739391892' },
@@ -30,8 +30,8 @@ export const team = [
   },
   {
     slug: 'leon',
-    name: 'Leon Ligabo',
-    title: 'Mice Exucutive',
+    name: 'Leon Yuri LIGABO',
+    title: 'M.I.C.E Consultant',
     phone: { display: '+254 793 586403', tel: '+254793586403' },
     email: 'leon@cometravelkenya.com',
     whatsapp: { display: '+254 793 586 403', number: '+254793586403' },
