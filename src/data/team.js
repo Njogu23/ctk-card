@@ -46,6 +46,24 @@ export const team = [
     whatsapp: { display: '+254 719 892 103', number: '+254719892103' },
     photo: '/team/emily.jpg',
   },
+  {
+    slug: 'keryta',
+    name: 'Keryta NEKESA',
+    title: 'Tours & Safaris Dept.',
+    phone: { display: '+254 711 082 254', tel: '+254711082254' },
+    email: 'keryta@cometravelkenya.com',
+    whatsapp: { display: '+254 711 082 254', number: '+254711082254' },
+    photo:'/team/keryta.jpg' 
+  },
+  {
+    slug: 'angela',
+    name: 'Angela WANJIKU',
+    title: 'M.I.C.E. Dept.',
+    phone: { display: '+254 746 910570', tel: '+254746910570' },
+    email: 'angela@cometravelkenya.com',
+    whatsapp: { display: '+254 746 910570', number: '+254746910570' },
+    photo: '/team/angela.jpg',
+  }
 ];
 
 export function getMember(slug) {
