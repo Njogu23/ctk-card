@@ -56,8 +56,8 @@ export const team = [
     photo:'/team/keryta.jpg' 
   },
   {
-    slug: 'angela',
-    name: 'Angela WANJIKU',
+    slug: 'angella',
+    name: 'Angella WANJIKU',
     title: 'M.I.C.E. Dept.',
     phone: { display: '+254 746 910570', tel: '+254746910570' },
     email: 'angela@cometravelkenya.com',
