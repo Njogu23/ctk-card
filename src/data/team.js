@@ -41,9 +41,9 @@ export const team = [
     slug: 'emily',
     name: 'Emily Wekulo',
     title: 'Content Writer & Storyteller',
-    phone: { display: '+254 719 892103', tel: '+254719892103' },
+    phone: { display: '+254 711 082 254', tel: '+254711082254' },
     email: 'emily@cometravelkenya.com',
-    whatsapp: { display: '+254 719 892 103', number: '+254719892103' },
+    whatsapp: { display: '+254 711 082 254', number: '+254711082254' },
     photo: '/team/emily.jpg',
   },
   {
